@@ -16,10 +16,11 @@ y_values = [random.uniform(y_min, y_max) for _ in range(num_points)]
 
 #Write the new data to the CSV file
 with open('data.csv', 'w', newline='') as csvfile:
+    # Declaring writer object
     writer = csv.writer(csvfile)
-    # Write header row
+    # Header for csv file
     writer.writerow(['x', 'y'])
-    # Write data rows
+    # Write data rows using for each 
     for i in range(num_points):
         writer.writerow([x_values[i], y_values[i]])
 
@@ -49,7 +50,7 @@ slope = 0
 
 # Define the sum of squares cost function
 def cost_function(x, y, intercept, slope):
-    """python
+    """
     Computes the sum of squares loss function for a linear regression model.
 
     Parameters:
@@ -90,7 +91,7 @@ for i in range(num_iters):
     intercept -= learning_rate * (1 / len(x_train)) * np.sum(error)
     slope -= learning_rate * (1 / len(x_train)) * np.sum(error * x_train)
 
-
+# Used to define step #
 step_num = 1
 for nums in total_loss:
     print('Step # ', step_num, ':', nums)
@@ -100,7 +101,7 @@ print("Effective slope:", slope)
 
 # Plot the cost function history to check for convergence
 plt.plot(total_loss)
-plt.title("Cost Function History")
+plt.title("Loss Function History")
 plt.xlabel("Iteration")
 plt.ylabel("Cost")
 plt.show()
